@@ -61,6 +61,9 @@ body {
   ); /* para que la posicion quede al centro de la caja 
   y no en la esquina superior izquierda. Se va a correr 50% hacia arriba 
   y hacia la izq de si mismo */
+  text-align: center; /* para que btn, como es un elemento inline,
+   puede ser tratado como texto, asi que sirve text-align 
+   para centrarlo */
 }
 
 .heading-primary {
@@ -68,6 +71,7 @@ body {
   text-transform: uppercase;
   backface-visibility: hidden; /* para eliminar el "temblor" 
   en las animaciones (¿? no caché el temblor) */
+  margin: 60px;
 }
 
 .heading-primary-main {
@@ -125,4 +129,35 @@ body {
     opacity: 1;
     transform: translate(0);
   }
+}
+
+.btn:link, /* link estado de un elemento anchor */
+.btn:visited {
+  /* visited estado de un elemento anchor a sido presionado
+    en estado default se pone purpura */
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block; /* porque su default es inline y con el padding 
+  hace que se sobreponga */
+  border-radius: 100px;
+  transition: all 0.2s; /* forma mas simple y antigua de animar 
+  (all means all properties), y se debe colocar en el estado inicial */
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  /* sombra eje x, sombra eje y, grado de borroso, color sombra*/
+}
+
+.btn:active {
+  /* active es cuando se hace click */
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
 }
