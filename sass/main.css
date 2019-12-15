@@ -1,0 +1,300 @@
+@charset "UTF-8";
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  /* (la propiedad box-sizing no se hereda por defecto, entonces al decir que
+  en todos los elementos(*) se heredará box-sizing y luego el body 
+  box-sizing: border-box; todos los elementos hijos heredarán esta característica.
+  esto es mejor practica que declarar en este selecto(*) el border-box */
+}
+
+/* el font-size del root(para poder setear rem) se setea en el selector 
+html */
+html {
+  /* font-size: 10px; */
+  /* 10px es para poder manejar mas facil los rem */
+  /* es mejor poner un % respecto al default(16px) para que el usuario 
+  pueda manejar cambios en el tamaño del texto, si se fija en pixeles 
+  no podrá hacerlo.
+  entonces 10 pixeles son el 62.5% de 10 */
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  /* darle un padding a toda la pagina */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /* border-box hace que width y height incluyan el padding y el border, y no solo en contenido */
+}
+
+.header {
+  height: 95vh;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(126, 213, 111, 0.8)), to(rgba(40, 180, 133, 0.8))), url(../img/hero.jpg);
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  /* header elemento padre de logo-box, propiedad 
+  para fijar posicion absoluta de logo-box respecto a su padre header, 
+  y que no se fije respecto a body */
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.header__logo-box {
+  position: absolute;
+  /* su referencia es un elemento padre 
+  (en este caso header) que tiene su posicion: relative */
+  top: 4rem;
+  left: 4rem;
+}
+
+.header__logo {
+  height: 3.5rem;
+  /* width se controlará automaticamente */
+}
+
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  /* por el efecto del poligono no se centrará verticalemnte, 
+  sino que se dejará un poco mas arriba */
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  /* para que la posicion quede al centro de la caja 
+  y no en la esquina superior izquierda. Se va a correr 50% hacia arriba 
+  y hacia la izq de si mismo */
+  text-align: center;
+  /* para que btn, como es un elemento inline,
+   puede ser tratado como texto, asi que sirve text-align 
+   para centrarlo */
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  /* para eliminar el "temblor" 
+  en las animaciones (¿? no caché el temblor) */
+  margin: 6rem;
+}
+
+.heading-primary--main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  /* como es una fuente importada(google fonts: lato), 
+  los weight tb se importaron y deben indicarse en el link de html */
+  letter-spacing: 3.5rem;
+  -webkit-animation-name: moveInLeft;
+          animation-name: moveInLeft;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  /* "ease-out" comienza mas rápido
+  y termina mas lento */
+  /* 
+  animation-iteration-count: 3; se repite la animacion las veces indicadas
+  animation-delay: 3s; la animacion comienza con delay de segundos indicados
+  */
+}
+
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.75rem;
+  -webkit-animation: moveInRight 1s ease-out;
+          animation: moveInRight 1s ease-out;
+}
+
+@-webkit-keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-10rem);
+            transform: translateX(-10rem);
+  }
+  80% {
+    -webkit-transform: translateX(1rem);
+            transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-10rem);
+            transform: translateX(-10rem);
+  }
+  80% {
+    -webkit-transform: translateX(1rem);
+            transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+
+@-webkit-keyframes moveInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(10rem);
+            transform: translateX(10rem);
+  }
+  80% {
+    -webkit-transform: translateX(-1rem);
+            transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(10rem);
+            transform: translateX(10rem);
+  }
+  80% {
+    -webkit-transform: translateX(-1rem);
+            transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+
+@-webkit-keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(3rem);
+            transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(3rem);
+            transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+
+.btn:link,
+.btn:visited {
+  /* visited estado de un elemento anchor a sido presionado
+    en estado default se pone purpura */
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  /* porque su default es inline y con el padding 
+  hace que se sobreponga */
+  border-radius: 10rem;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  /* forma mas simple y antigua de animar 
+  (all means all properties), y se debe colocar en el estado inicial */
+  position: relative;
+  /* para dar una referencia de posicion a btn::after */
+  font-size: 1.6rem;
+}
+
+.btn:hover {
+  -webkit-transform: translateY(-0.3rem);
+          transform: translateY(-0.3rem);
+  -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  /* sombra eje x, sombra eje y, grado de borroso, color sombra*/
+}
+
+.btn:active {
+  /* active es cuando se hace click */
+  -webkit-transform: translateY(-0.1rem);
+          transform: translateY(-0.1rem);
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.btn--white {
+  background-color: #fff;
+  color: #777;
+}
+
+.btn::after {
+  content: "";
+  /* siempre se debe especificar en un after. 
+  aunque esté vacío */
+  display: inline-block;
+  /* tambien se debe especificar siempre */
+  /* inline-block porque el boton original tb lo es */
+  height: 100%;
+  /* after es como un child del original, por lo tanto debe indicarse el tamaño en relacion al original */
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  /* para que se posicione respecto a btn(padre) */
+  top: 0;
+  left: 0;
+  z-index: -1;
+  /* para que se ponga detrás de btn */
+  -webkit-transition: all, 0.4s;
+  transition: all, 0.4s;
+  /* estado inicial para animacion al hacer hover(.btn:hover::after) */
+}
+
+.btn--white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  -webkit-transform: scaleX(1.4) scaleY(1.6);
+          transform: scaleX(1.4) scaleY(1.6);
+  /* para que crezca el boton */
+  opacity: 0;
+}
+
+.btn--animated {
+  -webkit-animation: moveInBottom 0.5s ease-out 0.75s;
+          animation: moveInBottom 0.5s ease-out 0.75s;
+  /* el .75 indica un delay */
+  -webkit-animation-fill-mode: backwards;
+          animation-fill-mode: backwards;
+  /* automaticamente aplica los estilos del 0% de la animación,
+  sino, como tiene delay, se ve el botón antes de que empiece la animación */
+}
+/*# sourceMappingURL=main.css.map */

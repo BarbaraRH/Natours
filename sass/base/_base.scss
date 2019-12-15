@@ -1,0 +1,35 @@
+/* 
+npm run compile:sass  //sass compilation(script en package.json)
+live-server           
+//browser reload(npm install live-server -g, instalado globalmente)
+//live-server(en carpeta local para que funcione en este proyecto).
+*/
+
+*, /* poner before y after aquí es muy importante, para que tambien se consideren en los pseudo-elementos */
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  /* (la propiedad box-sizing no se hereda por defecto, entonces al decir que
+  en todos los elementos(*) se heredará box-sizing y luego el body 
+  box-sizing: border-box; todos los elementos hijos heredarán esta característica.
+  esto es mejor practica que declarar en este selecto(*) el border-box */
+}
+
+/* el font-size del root(para poder setear rem) se setea en el selector 
+html */
+html {
+  /* font-size: 10px; */ /* 10px es para poder manejar mas facil los rem */
+  /* es mejor poner un % respecto al default(16px) para que el usuario 
+  pueda manejar cambios en el tamaño del texto, si se fija en pixeles 
+  no podrá hacerlo.
+  entonces 10 pixeles son el 62.5% de 10 */
+  font-size: 62.5%;
+}
+
+body {
+  padding: 3rem; /* darle un padding a toda la pagina */
+  box-sizing: border-box;
+  /* border-box hace que width y height incluyan el padding y el border, y no solo en contenido */
+}

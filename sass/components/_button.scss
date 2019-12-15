@@ -1,0 +1,64 @@
+.btn {
+  &:link, /* link estado de un elemento anchor */
+    &:visited {
+    /* visited estado de un elemento anchor a sido presionado
+      en estado default se pone purpura */
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block; /* porque su default es inline y con el padding 
+    hace que se sobreponga */
+    border-radius: 10rem;
+    transition: all 0.2s; /* forma mas simple y antigua de animar 
+    (all means all properties), y se debe colocar en el estado inicial */
+    position: relative; /* para dar una referencia de posicion a btn::after */
+    font-size: 1.6rem;
+  }
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    /* sombra eje x, sombra eje y, grado de borroso, color sombra*/
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6); /* para que crezca el boton */
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    /* active es cuando se hace click */
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  &::after {
+    content: ""; /* siempre se debe especificar en un after. 
+    aunque esté vacío */
+    display: inline-block; /* tambien se debe especificar siempre */
+    /* inline-block porque el boton original tb lo es */
+    height: 100%; /* after es como un child del original, por lo tanto debe indicarse el tamaño en relacion al original */
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute; /* para que se posicione respecto a btn(padre) */
+    top: 0;
+    left: 0;
+    z-index: -1; /* para que se ponga detrás de btn */
+    transition: all, 0.4s; /* estado inicial para animacion al hacer hover(&:hover::after) */
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    /* el .75 indica un delay */
+    animation-fill-mode: backwards;
+    /* automaticamente aplica los estilos del 0% de la animación,
+      sino, como tiene delay, se ve el botón antes de que empiece la animación */
+  }
+}

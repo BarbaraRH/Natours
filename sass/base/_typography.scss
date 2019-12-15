@@ -1,0 +1,45 @@
+/* body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: $color-grey-dark;
+} */
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: $color-grey-dark;
+  /* border-box hace que width y height incluyan el padding y el border, y no solo en contenido */
+}
+
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+  backface-visibility: hidden; /* para eliminar el "temblor" 
+    en las animaciones (¿? no caché el temblor) */
+  margin: 6rem;
+  &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400; /* como es una fuente importada(google fonts: lato), 
+      los weight tb se importaron y deben indicarse en el link de html */
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; /* "ease-out" comienza mas rápido
+      y termina mas lento */
+
+    /* 
+      animation-iteration-count: 3; se repite la animacion las veces indicadas
+      animation-delay: 3s; la animacion comienza con delay de segundos indicados
+      */
+  }
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out;
+  }
+}
