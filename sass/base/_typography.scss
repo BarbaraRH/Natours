@@ -56,5 +56,5 @@ body {
   );
   -webkit-background-clip: text; /* para que background-image se vea en el texto */
   background-clip: text; /* para que no lance error en este browser respecto a la propiedad webkit */
-  color: transparent;
+  color: transparent; /* para que se pueda ver el color del background */
 }
