@@ -12,7 +12,7 @@
     transition: all 0.2s; /* forma mas simple y antigua de animar 
     (all means all properties), y se debe colocar en el estado inicial */
     position: relative; /* para dar una referencia de posicion a btn::after */
-    font-size: 1.6rem;
+    font-size: $default-font-size;
   }
 
   &:hover {
@@ -60,5 +60,30 @@
     animation-fill-mode: backwards;
     /* automaticamente aplica los estilos del 0% de la animación,
       sino, como tiene delay, se ve el botón antes de que empiece la animación */
+  }
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+    transition: all 0.2s;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    transform: translate(0);
   }
 }
